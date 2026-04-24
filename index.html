@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Attendance Tracker</title>
+
+    <link rel="stylesheet" href="https://pyscript.net/releases/2024.1.1/core.css">
+    <script type="module" src="https://pyscript.net/releases/2024.1.1/core.js"></script>
+
+    <py-config>
+    packages = ["numpy", "matplotlib"]
+    </py-config>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<style>
+    body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #ff8fcf, #ffe680);
+    min-height: 100vh;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    padding: 40px;
+}
+
+.card, .graph-card {
+    background: rgba(255,255,255,0.95);
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.card {
+    width: 300px;
+}
+
+h2, h3 {
+    text-align: center;
+    color: #ff1493;
+}
+
+label {
+    font-weight: bold;
+    color: #444;
+}
+
+select, input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 8px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 8px;
+    border: none;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.submit-btn {
+    background: #ff1493;
+    color: white;
+}
+
+.submit-btn:hover {
+    background: #ff4db2;
+}
+
+.reset-btn {
+    background: #ffd966;
+    color: #444;
+}
+
+.reset-btn:hover {
+    background: #ffea99;
+}
+
+.graph-card {
+    width: 550px;
+    text-align: center;
+}
+</style>
+<body>
+
+<div class="container">
+
+    <div class="card">
+        <h2>Attendance Tracker</h2>
+
+        <label>Select Day</label>
+        <select id="day">
+            <option>Monday</option>
+            <option>Tuesday</option>
+            <option>Wednesday</option>
+            <option>Thursday</option>
+            <option>Friday</option>
+        </select>
+
+        <label>Absences</label>
+        <input type="number" id="absences" min="0">
+
+        <button class="submit-btn" py-click="add_data">Submit</button>
+        <button class="reset-btn" py-click="reset_data">Reset</button>
+    </div>
+
+    <div class="graph-card">
+        <h3>Weekly Attendance Graph</h3>
+        <div id="plot"></div>
+    </div>
+
+</div>
+
+<py-script src="main.py" defer></py-script>
+
+</body>
+</html>
